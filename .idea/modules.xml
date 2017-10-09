@@ -7,6 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/adressbook-web-tests_main.iml" filepath="$PROJECT_DIR$/.idea/modules/adressbook-web-tests_main.iml" group="adressbook-web-tests" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/adressbook-web-tests_test.iml" filepath="$PROJECT_DIR$/.idea/modules/adressbook-web-tests_test.iml" group="adressbook-web-tests" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sandbox/sandbox2.iml" filepath="$PROJECT_DIR$/sandbox/sandbox2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sandbox/sandboxJAva.iml" filepath="$PROJECT_DIR$/sandbox/sandboxJAva.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox_main.iml" group="sandbox" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox_test.iml" group="sandbox" />
     </modules>
