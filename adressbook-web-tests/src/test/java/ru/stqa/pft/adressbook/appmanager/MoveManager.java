@@ -16,5 +16,11 @@ public class MoveManager extends HelperBase {
   public void gotoUsers() {
     click(By.linkText("add new"));
   }
+  public void gotoMain() {
+    click(By.linkText("logo"));
+  }
 
+  public void gotoUserModify (){
+    click(By.name("modifiy"));
+  }
 }

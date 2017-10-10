@@ -8,11 +8,11 @@ import ru.stqa.pft.adressbook.model.UserFields;
 public class UserCreateTest extends TestBase{
 
   @Test
-  public void testGroupCreation() {
+  public void testUserCreation() {
     app.getMoveManager().gotoUsers();
     app.getUserHelper().fillUserFields(new UserFields("testest1", "testest2", "testest3", "test4","test5","test6", "test7", "test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4"));
     app.getUserHelper().submitUser();
-    app.getUserHelper().backtoUsersPage();
+    app.stop();
   }
 
 }

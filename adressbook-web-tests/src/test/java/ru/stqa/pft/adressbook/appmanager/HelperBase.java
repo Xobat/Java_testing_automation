@@ -1,8 +1,11 @@
 package ru.stqa.pft.adressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 public class HelperBase {
   protected FirefoxDriver wd;
@@ -29,4 +32,5 @@ public class HelperBase {
       return false;
     }
   }
+
 }

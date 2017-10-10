@@ -1,8 +1,11 @@
 package ru.stqa.pft.adressbook.appmanager;
 
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +28,7 @@ public class ApplicationManager {
     moveManager = new MoveManager(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin","secret");
+
   }
 
 
@@ -39,7 +43,12 @@ public class ApplicationManager {
   public UserHelper getUserHelper() {
     return userHelper;
   }
-
+  public void imitationEnter() {
+    Actions builder = new Actions(wd);
+    Action enter =
+            builder .sendKeys(Keys.ENTER).build();
+    enter.perform();
+  }
 
   public MoveManager getMoveManager() {
     return moveManager;

@@ -38,4 +38,16 @@ public class UserHelper extends HelperBase {
     type(By.name("notes"),userFields.getNotes());
   }
 
+  public void selectUser () {
+      wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img")).click();
+
+  }
+  public void deleteSelectedUser () {
+    wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+  }
+
+  public void deleteUserFromDetails() {
+    wd.findElement(By.xpath("//div[@id='content']/form[2]/input[2]")).click();
+  }
+
 }

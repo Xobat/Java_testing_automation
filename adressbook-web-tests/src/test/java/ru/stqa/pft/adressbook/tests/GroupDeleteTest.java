@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.appmanager.TestBase;
 
 
-public class DeleteGroupTest extends TestBase {
+public class GroupDeleteTest extends TestBase {
 
 
 
