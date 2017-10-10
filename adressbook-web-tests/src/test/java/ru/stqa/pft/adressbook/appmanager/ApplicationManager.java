@@ -13,6 +13,7 @@ public class ApplicationManager {
   private MoveManager moveManager;
   private GroupHelper groupHelper;
   private SessionHelper sessionHelper;
+  private UserHelper userHelper;
 
 
   public void init() {
@@ -20,6 +21,7 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
+    userHelper = new UserHelper(wd);
     moveManager = new MoveManager(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin","secret");
@@ -33,6 +35,9 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+  public UserHelper getUserHelper() {
+    return userHelper;
   }
 
 

@@ -14,7 +14,7 @@ public class MoveManager extends HelperBase {
       click(By.linkText("groups"));
   }
   public void gotoUsers() {
-    click(By.linkText("users"));
+    click(By.linkText("add new"));
   }
 
 }
