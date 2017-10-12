@@ -35,8 +35,8 @@ public class GroupHelper extends HelperBase{
   }
 
   public void selectGroup() {
-      if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
-        click(By.xpath("//div[@id='content']/form/span[2]/input"));
+      if (!wd.findElement(By.name("selected[]")).isSelected()) {
+        click(By.name("selected[]"));
       }
   }
 
@@ -46,5 +46,16 @@ public class GroupHelper extends HelperBase{
 
   public void submitGroupModified() {
     click(By.xpath("update"));
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void createGroup(GroupFields group) {
+    creationNewGroup();
+    fillGroupFields(group);
+    submitGroup();
+   backtoGroupsPage();
   }
 }

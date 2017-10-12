@@ -7,9 +7,10 @@ public class UserDeleteTest extends TestBase{
 
   @Test
   public void deleteUserTest() {
-    app.getMoveManager().gotoUserModify();
-    app.getUserHelper().deleteUserFromDetails();
-    app.stop();
+    app.getUserHelper().selectUser();
+    app.getUserHelper().deleteUser();
+    app.imitationEnter();
+
   }
 
 }

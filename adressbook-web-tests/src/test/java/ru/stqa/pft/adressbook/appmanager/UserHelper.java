@@ -49,7 +49,7 @@ public class UserHelper extends HelperBase {
     type(By.name("notes"),userFields.getNotes());
   }
 
-  public void selectUser () {
+  public void selectUserModified() {
       wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img")).click();
 
   }
@@ -63,5 +63,15 @@ public class UserHelper extends HelperBase {
 
   public void submitUserModified () {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+  }
+
+  public void selectUser() {
+    if (!wd.findElement(By.name("selected[]")).isSelected()){
+      wd.findElement(By.name("selected[]")).click();
+    }
+  }
+
+  public void deleteUser() {
+    wd.findElement(By.name("selected[]"));
   }
 }
