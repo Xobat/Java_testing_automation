@@ -11,7 +11,7 @@ public class UserModificationTest extends TestBase{
   public void modificationUserTest() {
 
     app.getMoveManager().gotoUserModify();
-    app.getUserHelper().fillUserFields(new UserFields("3", "124", "fwe", "123a","hfdh4","hhje", "r32r", "vxcsd","aaaa","fwqefq","    ","qwtqwt","gqegqeg "," qfqsf ","reg23 qw","ddwq","r21r","fwa wa ","wfwqfw1 ","qwf f1", "test1"));
+    app.getUserHelper().fillUserFields(new UserFields("3", "124", "fwe", "123a","hfdh4","hhje", "r32r", "vxcsd","aaaa","fwqefq","    ","qwtqwt","gqegqeg "," qfqsf ","reg23 qw","ddwq","r21r","fwa wa ","wfwqfw1 ","qwf f1", "2"));
     app.getUserHelper().submitUserModified();
     app.stop();
   }

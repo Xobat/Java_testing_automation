@@ -37,9 +37,11 @@ public class UserHelper extends HelperBase {
     new Select(wd.findElement(By.name("bday"))).selectByVisibleText("2");
     new Select(wd.findElement(By.name("bmonth"))).selectByValue("January");
     new Select(wd.findElement(By.name("aday"))).selectByVisibleText("5");
-    new Select(wd.findElement(By.name("amonth"))).selectByValue("january");
     if (isElementPresent(By.name("new_group"))) {
-      new Select(wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]"))).selectByVisibleText(userFields.getGroup());
+      new Select(wd.findElement(By.name("amonth"))).selectByValue("January");
+      new Select(wd.findElement(By.name("new_group"))).selectByValue(userFields.getGroup());
+    } else {
+      new Select(wd.findElement(By.name("amonth"))).selectByValue("january");
     }
     type(By.name("byear"),userFields.getbYear());
     type(By.name("ayear"),userFields.getaYear());
