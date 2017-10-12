@@ -1,9 +1,7 @@
 package ru.stqa.pft.adressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.adressbook.model.UserFields;
 
@@ -39,7 +37,7 @@ public class UserHelper extends HelperBase {
     new Select(wd.findElement(By.name("aday"))).selectByVisibleText("5");
     if (isElementPresent(By.name("new_group"))) {
       new Select(wd.findElement(By.name("amonth"))).selectByValue("January");
-      new Select(wd.findElement(By.name("new_group"))).selectByValue(userFields.getGroup());
+      new Select(wd.findElement(By.name("new_group"))).selectByIndex(userFields.getGroupID());
     } else {
       new Select(wd.findElement(By.name("amonth"))).selectByValue("january");
     }

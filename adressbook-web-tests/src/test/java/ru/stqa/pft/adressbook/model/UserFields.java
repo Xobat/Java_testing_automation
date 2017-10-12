@@ -21,11 +21,11 @@ public class UserFields {
   private final String address2;
   private final String phone2;
   private final String notes;
-  private final String group;
+  private final int groupID;
 
 
 
-  public UserFields(String firstName, String middleName, String lastName, String nickName, String company, String title, String address, String home, String mobile, String work, String fax, String email1, String email2, String email3, String homepage, String bYear, String aYear, String address2, String phone2, String notes, String group) {
+  public UserFields(String firstName, String middleName, String lastName, String nickName, String company, String title, String address, String home, String mobile, String work, String fax, String email1, String email2, String email3, String homepage, String bYear, String aYear, String address2, String phone2, String notes, int groupID) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -46,7 +46,7 @@ public class UserFields {
     this.address2 = address2;
     this.phone2 = phone2;
     this.notes = notes;
-    this.group = group;
+    this.groupID = groupID;
   }
 
   public String getFirstName() {
@@ -128,7 +128,7 @@ public class UserFields {
   public String getNotes() {
     return notes;
   }
-public String getGroup() {
-    return group;
+public int getGroupID() {
+    return groupID;
 }
 }

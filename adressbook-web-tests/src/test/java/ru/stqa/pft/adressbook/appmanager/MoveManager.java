@@ -21,6 +21,6 @@ public class MoveManager extends HelperBase {
     click(By.linkText("logo"));
   }
   public void gotoUserModify (){
-    click(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 }
