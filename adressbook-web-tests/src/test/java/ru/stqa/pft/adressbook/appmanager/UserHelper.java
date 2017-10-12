@@ -74,4 +74,8 @@ public class UserHelper extends HelperBase {
   public void deleteUser() {
     wd.findElement(By.name("selected[]"));
   }
+  public int getUserCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
 }

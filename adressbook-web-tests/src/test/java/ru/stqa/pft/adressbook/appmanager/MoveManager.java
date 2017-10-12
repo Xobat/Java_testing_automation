@@ -18,9 +18,13 @@ public class MoveManager extends HelperBase {
     click(By.linkText("add new"));
   }
   public void gotoMain() {
-    click(By.linkText("logo"));
+    click(By.id("logo"));
   }
   public void gotoUserModify (){
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void backtoGroupPage() {
+    click(By.linkText("group page"));
   }
 }

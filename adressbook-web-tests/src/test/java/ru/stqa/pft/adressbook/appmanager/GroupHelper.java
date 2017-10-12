@@ -45,7 +45,7 @@ public class GroupHelper extends HelperBase{
   }
 
   public void submitGroupModified() {
-    click(By.xpath("update"));
+    click(By.name("update"));
   }
 
   public boolean isThereAGroup() {
@@ -57,5 +57,9 @@ public class GroupHelper extends HelperBase{
     fillGroupFields(group);
     submitGroup();
    backtoGroupsPage();
+  }
+
+  public int getGroupCount() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }
