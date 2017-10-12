@@ -6,18 +6,22 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.appmanager.TestBase;
 import ru.stqa.pft.adressbook.model.GroupFields;
 
+import java.util.List;
+
 public class GroupCreationTest extends TestBase {
 
     @Test
     public void testGroupCreation() {
         app.getMoveManager().gotoGroups();
-        int before = app.getGroupHelper().getGroupCount();
+
+        List<GroupFields> before = app.getGroupHelper().getGroupList();
         app.getGroupHelper().creationNewGroup();
         app.getGroupHelper().fillGroupFields(new GroupFields("testest1", "testest2", "testest3"));
         app.getGroupHelper().submitGroup();
         app.getGroupHelper().backtoGroupsPage();
-        int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(after, before+1);
+        List<GroupFields> after = app.getGroupHelper().getGroupList();
+
+        Assert.assertEquals(after.size(), before.size()-1);
     }
 
 }
