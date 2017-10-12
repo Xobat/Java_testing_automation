@@ -20,8 +20,7 @@ public class MoveManager extends HelperBase {
   public void gotoMain() {
     click(By.linkText("logo"));
   }
-
   public void gotoUserModify (){
-    click(By.name("modifiy"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img"));
   }
 }

@@ -45,6 +45,6 @@ public class GroupHelper extends HelperBase{
   }
 
   public void submitGroupModified() {
-    click(By.name("update"));
+    click(By.xpath("update"));
   }
 }

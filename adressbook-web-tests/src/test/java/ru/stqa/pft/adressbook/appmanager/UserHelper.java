@@ -1,8 +1,10 @@
 package ru.stqa.pft.adressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.adressbook.model.UserFields;
 
 public class UserHelper extends HelperBase {
@@ -32,6 +34,14 @@ public class UserHelper extends HelperBase {
     type(By.name("email2"),userFields.getEmail2());
     type(By.name("email3"),userFields.getEmail3());
     type(By.name("homepage"),userFields.getHomepage());
+    new Select(wd.findElement(By.name("bday"))).selectByVisibleText("2");
+    new Select(wd.findElement(By.name("bmonth"))).selectByValue("January");
+    new Select(wd.findElement(By.name("aday"))).selectByVisibleText("5");
+    new Select(wd.findElement(By.name("amonth"))).selectByValue("january");
+    if (isElementPresent(By.name("new_group"))) {
+      new Select(wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]"))).selectByVisibleText(userFields.getGroup());
+    }
+    type(By.name("byear"),userFields.getbYear());
     type(By.name("ayear"),userFields.getaYear());
     type(By.name("address2"),userFields.getAddress2());
     type(By.name("nickname"),userFields.getNickName());
@@ -51,4 +61,7 @@ public class UserHelper extends HelperBase {
     wd.findElement(By.xpath("//div[@id='content']/form[2]/input[2]")).click();
   }
 
+  public void submitUserModified () {
+    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+  }
 }

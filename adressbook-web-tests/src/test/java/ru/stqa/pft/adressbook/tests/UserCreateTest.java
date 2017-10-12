@@ -10,7 +10,7 @@ public class UserCreateTest extends TestBase{
   @Test
   public void testUserCreation() {
     app.getMoveManager().gotoUsers();
-    app.getUserHelper().fillUserFields(new UserFields("testest1", "testest2", "testest3", "test4","test5","test6", "test7", "test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4"));
+    app.getUserHelper().fillUserFields(new UserFields("testest1", "testest2", "testest3", "test4","test5","test6", "test7", "test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4","test4", "test1"));
     app.getUserHelper().submitUser();
     app.stop();
   }
