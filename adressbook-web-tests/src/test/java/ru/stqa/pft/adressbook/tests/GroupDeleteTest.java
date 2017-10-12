@@ -15,10 +15,10 @@ public class GroupDeleteTest extends TestBase {
     @Test
     public void groupDelete() {
         app.getMoveManager().gotoGroups();
-        List<GroupFields> before = app.getGroupHelper().getGroupList();
         if (!app.getGroupHelper().isThereAGroup()) {
             app.getGroupHelper().createGroup(new GroupFields("test1","test2","test3"));
         }
+        List<GroupFields> before = app.getGroupHelper().getGroupList();
         app.getGroupHelper().selectGroup(1);
         app.getGroupHelper().deleteSelectedGroup();
         app.getGroupHelper().backtoGroupsPage();

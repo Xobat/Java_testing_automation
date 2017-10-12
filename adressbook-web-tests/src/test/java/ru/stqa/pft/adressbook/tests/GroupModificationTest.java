@@ -12,6 +12,9 @@ public class GroupModificationTest extends TestBase {
   @Test
   public void testGroupModification() {
     app.getMoveManager().gotoGroups();
+    if (!app.getGroupHelper().isThereAGroup()) {
+      app.getGroupHelper().createGroup(new GroupFields("test1","test2","test3"));
+    }
     List<GroupFields> before = app.getGroupHelper().getGroupList();
     app.getGroupHelper().selectGroup(0);
     app.getGroupHelper().initGroupModification();
