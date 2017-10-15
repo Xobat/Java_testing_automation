@@ -8,7 +8,7 @@ import ru.stqa.pft.adressbook.model.UserFields;
 
 public class UserCreateTest extends TestBase{
 
-  @Test
+  @Test(enabled = false)
   public void testUserCreation() {
     int before = app.getUserHelper().getUserCount();
     app.getMoveManager().gotoUsers();

@@ -7,6 +7,21 @@ public class GroupFields {
   private int id;
 
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    GroupFields that = (GroupFields) o;
+
+    return groupName != null ? groupName.equals(that.groupName) : that.groupName == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return groupName != null ? groupName.hashCode() : 0;
+  }
+
   public GroupFields(String groupName, String groupHeader, String groupFooter, int id) {
     this.groupName = groupName;
     this.groupHeader = groupHeader;
@@ -20,7 +35,7 @@ public class GroupFields {
     this.groupName = groupName;
     this.groupHeader = groupHeader;
     this.groupFooter = groupFooter;
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;
   }
 
   public String getGroupName() {
@@ -48,21 +63,4 @@ public class GroupFields {
 
   public void setId(int id) { this.id = id; }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    GroupFields that = (GroupFields) o;
-
-    if (id != that.id) return false;
-    return groupName != null ? groupName.equals(that.groupName) : that.groupName == null;
-  }
-
-  @Override
-  public int hashCode() {
-    int result = groupName != null ? groupName.hashCode() : 0;
-    result = 31 * result + id;
-    return result;
-  }
 }

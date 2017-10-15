@@ -8,7 +8,7 @@ import ru.stqa.pft.adressbook.model.UserFields;
 
 public class UserModificationTest extends TestBase{
 
-  @Test
+  @Test(enabled = false)
   public void modificationUserTest() {
     int before = app.getUserHelper().getUserCount();
     app.getMoveManager().gotoUserModify();

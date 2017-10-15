@@ -6,7 +6,7 @@ import ru.stqa.pft.adressbook.appmanager.TestBase;
 
 public class UserDeleteTest extends TestBase{
 
-  @Test
+  @Test(enabled = false)
   public void deleteUserTest() {
     app.getMoveManager().gotoMain();
     int before = app.getUserHelper().getUserCount();
