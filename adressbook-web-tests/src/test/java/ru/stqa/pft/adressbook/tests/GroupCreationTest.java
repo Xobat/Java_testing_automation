@@ -1,11 +1,10 @@
 package ru.stqa.pft.adressbook.tests;
 
-import org.apache.http.util.Asserts;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.appmanager.TestBase;
 import ru.stqa.pft.adressbook.model.GroupFields;
-
+import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTest extends TestBase {
@@ -17,17 +16,16 @@ public class GroupCreationTest extends TestBase {
 
             List<GroupFields> before = app.getGroupHelper().getGroupList();
             app.getGroupHelper().creationNewGroup();
-            app.getGroupHelper().fillGroupFields(new GroupFields("testest1", "testest2", "testest3"));
+            GroupFields group = new GroupFields("testest2", "testest3", "testest4");
+            app.getGroupHelper().fillGroupFields(group);
             app.getGroupHelper().submitGroup();
             app.getGroupHelper().backtoGroupsPage();
-
             List<GroupFields> after = app.getGroupHelper().getGroupList();
-
             Assert.assertEquals(after.size(), before.size() + 1);
-        if (after.size()>0) {
-            before.add(after.get(after.size()-1));
-            Assert.assertEquals(after, before);
-        }
+            group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+            before.add(group);
+            Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
+
 
     }
 
