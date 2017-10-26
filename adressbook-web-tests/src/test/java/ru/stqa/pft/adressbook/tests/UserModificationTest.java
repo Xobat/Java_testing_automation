@@ -8,16 +8,18 @@ import ru.stqa.pft.adressbook.model.UserFields;
 
 public class UserModificationTest extends TestBase{
 
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void modificationUserTest() {
-    int before = app.getUserHelper().getUserCount();
-    app.getMoveManager().gotoUserModify();
-    app.getUserHelper().fillUserFields(new UserFields("3", "124", "fwe", "123a","hfdh4","hhje", "r32r", "vxcsd","aaaa","fwqefq","    ","qwtqwt","gqegqeg "," qfqsf ","reg23 qw","ddwq","r21r","fwa wa ","wfwqfw1 ","qwf f1", 1));
-    app.getUserHelper().submitUserModified();
-    app.getMoveManager().gotoMain();
-    int after = app.getUserHelper().getUserCount();
+    UserFields user = new UserFields().withName("Name").withMiddleName("middleName").withLastName("lastName").withAddress2("adress2").
+            withAdress("address").withAYear("2000").withBYear("1983").withCompany("google").withFax("8999129319").withHome("home-home").
+            withGroupID(124).withNotes("strangeNotes").withHomepage("mySite2").withPhone2("283948182").withEmail1("sad@asd.ra").
+            withEmail2("123@11.11").withEmail3("email3").withMobile("8999292929292").withNickName("nicko").withTitle("title1");
+    int before = app.user().getUserCount();
+    app.goTo().main();
+    app.goTo().selectUserDetails();
+    app.user().update(user);
+    int after = app.user().getUserCount();
     Assert.assertEquals(after, before);
-    app.stop();
   }
 
 }

@@ -1,10 +1,10 @@
 package ru.stqa.pft.adressbook.model;
 
 public class GroupFields {
-  private final String groupName;
-  private final String groupHeader;
-  private final String groupFooter;
-  private int id;
+  private  String groupName;
+  private  String groupHeader;
+  private  String groupFooter;
+  private int id = Integer.MAX_VALUE;
 
 
   @Override
@@ -20,22 +20,6 @@ public class GroupFields {
   @Override
   public int hashCode() {
     return groupName != null ? groupName.hashCode() : 0;
-  }
-
-  public GroupFields(String groupName, String groupHeader, String groupFooter, int id) {
-    this.groupName = groupName;
-    this.groupHeader = groupHeader;
-    this.groupFooter = groupFooter;
-    this.id = id;
-  }
-
-
-
-  public GroupFields(String groupName, String groupHeader, String groupFooter) {
-    this.groupName = groupName;
-    this.groupHeader = groupHeader;
-    this.groupFooter = groupFooter;
-    this.id = Integer.MAX_VALUE;
   }
 
   public String getGroupName() {
@@ -61,6 +45,22 @@ public class GroupFields {
     return groupFooter;
   }
 
-  public void setId(int id) { this.id = id; }
+  public GroupFields withId(int id) {
+    this.id = id;
+    return this;
+  }
+  public GroupFields withName(String groupName) {
+    this.groupName = groupName;
+    return this;
+  }
 
+  public GroupFields withHeader(String groupHeader) {
+    this.groupHeader = groupHeader;
+    return this;
+  }
+
+  public GroupFields withFooter(String groupFooter) {
+    this.groupFooter = groupFooter;
+    return this;
+  }
 }

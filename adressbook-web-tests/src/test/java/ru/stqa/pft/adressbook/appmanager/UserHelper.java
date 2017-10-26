@@ -11,11 +11,15 @@ public class UserHelper extends HelperBase {
     super(wd);
   }
   public void backtoUsersPage() {
-    click(By.linkText("logo"));
+    click(By.id("logo"));
   }
   public void submitUser() {
     click(By.name("submit"));
   }
+  public void updateUser() {
+    click(By.name("update"));
+  }
+
   public void fillUserFields(UserFields userFields) {
     type(By.name("firstname"), userFields.getFirstName());
     type(By.name("middlename"), userFields.getMiddleName());
@@ -37,7 +41,11 @@ public class UserHelper extends HelperBase {
     new Select(wd.findElement(By.name("aday"))).selectByVisibleText("5");
     if (isElementPresent(By.name("new_group"))) {
       new Select(wd.findElement(By.name("amonth"))).selectByValue("January");
-      new Select(wd.findElement(By.name("new_group"))).selectByIndex(userFields.getGroupID());
+      if (userFields.getGroupID()>0) {
+        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[3]")).isSelected()) {
+          wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[3]")).click();
+        }
+      }
     } else {
       new Select(wd.findElement(By.name("amonth"))).selectByValue("january");
     }
@@ -77,5 +85,14 @@ public class UserHelper extends HelperBase {
   public int getUserCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
-
+  public void create(UserFields user) {
+    fillUserFields(user);
+    submitUser();
+    backtoUsersPage();
+  }
+  public void update(UserFields user) {
+    fillUserFields(user);
+    updateUser();
+    backtoUsersPage();
+  }
 }

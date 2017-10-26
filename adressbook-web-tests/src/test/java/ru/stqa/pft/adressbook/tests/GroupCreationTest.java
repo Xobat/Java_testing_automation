@@ -14,17 +14,14 @@ public class GroupCreationTest extends TestBase {
     @Test
     public void testGroupCreation() {
 
-            app.getMoveManager().gotoGroups();
+            app.goTo().groups();
 
-            List<GroupFields> before = app.getGroupHelper().getGroupList();
-            app.getGroupHelper().creationNewGroup();
-            GroupFields group = new GroupFields("testest2", "testest3", "testest4");
-            app.getGroupHelper().fillGroupFields(group);
-            app.getGroupHelper().submitGroup();
-            app.getGroupHelper().backtoGroupsPage();
-            List<GroupFields> after = app.getGroupHelper().getGroupList();
+            List<GroupFields> before = app.group().list();
+            GroupFields group = new GroupFields().withName("test2");
+            app.group().create(group);
+            List<GroupFields> after = app.group().list();
             Assert.assertEquals(after.size(), before.size() + 1);
-            group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+            group.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
             before.add(group);
             Comparator<? super GroupFields> byId = (g1,g2) -> Integer.compare(g1.getId(),g2.getId());
             before.sort(byId);

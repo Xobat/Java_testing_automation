@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="adressbook-web-tests/src/main/java"/>
+	<classpathentry kind="src" path="adressbook-web-tests/src/test/java"/>
+	<classpathentry kind="src" path="sandbox/src/main/src"/>
+	<classpathentry kind="lib" path="adressbook-web-tests/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="sandbox/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="sandbox/out/test/classes"/>
+</classpath>

@@ -11,17 +11,17 @@ public class MoveManager extends HelperBase {
     super(wd);
   }
 
-  public void gotoGroups() {
+  public void groups() {
       click(By.linkText("groups"));
   }
-  public void gotoUsers() {
+  public void addUser() {
     click(By.linkText("add new"));
   }
-  public void gotoMain() {
+  public void main() {
     click(By.id("logo"));
   }
-  public void gotoUserModify (){
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void selectUserDetails(){
+    click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
   }
 
   public void backtoGroupPage() {

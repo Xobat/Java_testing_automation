@@ -33,11 +33,11 @@ public class GroupHelper extends HelperBase{
     click(By.id("content"));
   }
 
-  public void deleteSelectedGroup() {
+  public void delete() {
     click(By.xpath("//div[@id='content']/form/input[5]"));
   }
 
-  public void selectGroup(int index) {
+  public void select(int index) {
       wd.findElements(By.name("selected[]")).get(index).click();
   }
 
@@ -53,26 +53,38 @@ public class GroupHelper extends HelperBase{
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void createGroup(GroupFields group) {
+  public void create(GroupFields group) {
     creationNewGroup();
     fillGroupFields(group);
     submitGroup();
-   backtoGroupsPage();
+    backtoGroupsPage();
   }
 
   public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupFields> getGroupList() {
+  public List<GroupFields> list() {
     List <GroupFields> groups = new ArrayList<GroupFields>();
     List <WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element: elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      GroupFields group = new GroupFields(name,null,null, id);
-      groups.add(group);
+
+      groups.add(new GroupFields().withId(id).withName(name));
     }
     return groups;
+  }
+  public void modify(int index, GroupFields group) {
+    select(index);
+    initGroupModification();
+    fillGroupFields(group);
+    submitGroupModified();
+    backtoGroupsPage();
+  }
+  public void delete(int index) {
+    select(index);
+    delete();
+    backtoGroupsPage();
   }
 }

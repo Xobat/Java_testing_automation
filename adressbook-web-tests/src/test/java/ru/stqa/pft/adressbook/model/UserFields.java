@@ -1,56 +1,137 @@
 package ru.stqa.pft.adressbook.model;
 
 public class UserFields {
-  private final String firstName;
-  private final String middleName;
-  private final String lastName;
-  private final String nickName;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String home;
-  private final String mobile;
-  private final String work;
-  private final String fax;
-  private final String email1;
-  private final String email2;
-  private final String email3;
-  private final String homepage;
-  private final String bYear;
-  private final String aYear;
-  private final String address2;
-  private final String phone2;
-  private final String notes;
-  private final int groupID;
+  private String firstName;
+  private String middleName;
+  private String lastName;
+  private String nickName;
+  private String title;
+  private String company;
+  private String address;
+  private String home;
+  private String mobile;
+  private String work;
+  private String fax;
+  private String email1;
+  private String email2;
+  private String email3;
+  private String homepage;
+  private String bYear;
+  private String aYear;
+  private String address2;
+  private String phone2;
+  private String notes;
+  private int groupID;
 
 
-
-  public UserFields(String firstName, String middleName, String lastName, String nickName, String company, String title, String address, String home, String mobile, String work, String fax, String email1, String email2, String email3, String homepage, String bYear, String aYear, String address2, String phone2, String notes, int groupID) {
+  public UserFields withName(String firstName) {
     this.firstName = firstName;
+    return this;
+  }
+
+  public UserFields withMiddleName(String middleName) {
     this.middleName = middleName;
+    return this;
+  }
+
+  public UserFields withLastName(String lastName) {
     this.lastName = lastName;
+    return this;
+  }
+
+  public UserFields withNickName(String nickName) {
     this.nickName = nickName;
-    this.company = company;
+    return this;
+  }
+
+  public UserFields withTitle(String title) {
     this.title = title;
+    return this;
+  }
+
+  public UserFields withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public UserFields withAdress(String address) {
     this.address = address;
+    return this;
+  }
+
+  public UserFields withHome(String home) {
     this.home = home;
+    return this;
+  }
+
+  public UserFields withMobile(String mobile) {
     this.mobile = mobile;
+    return this;
+  }
+
+  public UserFields withWork(String work) {
     this.work = work;
+    return this;
+  }
+
+  public UserFields withFax(String fax) {
     this.fax = fax;
+    return this;
+  }
+
+  public UserFields withEmail1(String email1) {
     this.email1 = email1;
+    return this;
+  }
+
+  public UserFields withEmail2(String email2) {
     this.email2 = email2;
+    return this;
+  }
+
+  public UserFields withEmail3(String email3) {
     this.email3 = email3;
+    return this;
+  }
+
+  public UserFields withHomepage(String homepage) {
     this.homepage = homepage;
+    return this;
+  }
+
+  public UserFields withBYear(String bYear) {
     this.bYear = bYear;
+    return this;
+  }
+
+  public UserFields withAYear(String aYear) {
     this.aYear = aYear;
+    return this;
+  }
+
+  public UserFields withAddress2(String address2) {
     this.address2 = address2;
+    return this;
+  }
+
+  public UserFields withPhone2(String phone2) {
     this.phone2 = phone2;
+    return this;
+  }
+
+  public UserFields withNotes(String notes) {
     this.notes = notes;
+    return this;
+  }
+
+  public UserFields withGroupID(int groupID) {
     this.groupID = groupID;
+    return this;
   }
 
   public String getFirstName() {
     return firstName;
+
   }
 
   public String getMiddleName() {

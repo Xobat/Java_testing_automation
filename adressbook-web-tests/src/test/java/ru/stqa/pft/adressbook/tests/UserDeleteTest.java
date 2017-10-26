@@ -8,12 +8,12 @@ public class UserDeleteTest extends TestBase{
 
   @Test(enabled = false)
   public void deleteUserTest() {
-    app.getMoveManager().gotoMain();
-    int before = app.getUserHelper().getUserCount();
-    app.getUserHelper().selectUser();
-    app.getUserHelper().deleteUser();
+    app.goTo().main();
+    int before = app.user().getUserCount();
+    app.user().selectUser();
+    app.user().deleteUser();
     app.imitationEnter();
-    int after = app.getUserHelper().getUserCount();
+    int after = app.user().getUserCount();
     Assert.assertEquals(after, before-1);
   }
 

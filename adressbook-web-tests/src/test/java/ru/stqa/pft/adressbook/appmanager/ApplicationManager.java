@@ -53,10 +53,10 @@ public class ApplicationManager {
     ApplicationManager.this.wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
-  public UserHelper getUserHelper() {
+  public UserHelper user() {
     return userHelper;
   }
   public void imitationEnter() {
@@ -66,7 +66,7 @@ public class ApplicationManager {
     enter.perform();
   }
 
-  public MoveManager getMoveManager() {
+  public MoveManager goTo() {
     return moveManager;
   }
 }
