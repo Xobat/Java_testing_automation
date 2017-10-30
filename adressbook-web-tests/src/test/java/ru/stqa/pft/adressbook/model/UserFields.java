@@ -22,6 +22,7 @@ public class UserFields {
   private String phone2;
   private String notes;
   private int groupID;
+  private int id;
 
 
   public UserFields withName(String firstName) {
@@ -117,6 +118,7 @@ public class UserFields {
   public UserFields withPhone2(String phone2) {
     this.phone2 = phone2;
     return this;
+
   }
 
   public UserFields withNotes(String notes) {
@@ -129,10 +131,14 @@ public class UserFields {
     return this;
   }
 
-  public String getFirstName() {
-    return firstName;
-
+  public UserFields withId(int id) {
+    this.id = id;
+    return this;
   }
+
+
+
+  public String getFirstName() { return firstName; }
 
   public String getMiddleName() {
     return middleName;
@@ -209,7 +215,27 @@ public class UserFields {
   public String getNotes() {
     return notes;
   }
-public int getGroupID() {
+
+  public int getGroupID() {
     return groupID;
 }
+
+  public int getId() {
+    return id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    UserFields that = (UserFields) o;
+
+    return id == that.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return id;
+  }
 }

@@ -8,6 +8,7 @@ import ru.stqa.pft.adressbook.model.GroupFields;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupCreationTest extends TestBase {
 
@@ -16,16 +17,16 @@ public class GroupCreationTest extends TestBase {
 
             app.goTo().groups();
 
-            List<GroupFields> before = app.group().list();
+            Set<GroupFields> before = app.group().all();
             GroupFields group = new GroupFields().withName("test2");
             app.group().create(group);
-            List<GroupFields> after = app.group().list();
+            Set<GroupFields> after = app.group().all();
             Assert.assertEquals(after.size(), before.size() + 1);
-            group.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+            group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt()); /*Данная функция превращает множество after в поток
+      типа GroupFields->after.stream, из него извлекаем множество целых чисел -> mapToInt; в качестве параметра функции мы передаём
+      анонимную функцию, которая проходит по всему потоку и каждый элемент преобразует в число (g)->g.getId(); затем вызываем метод
+      max, которая сравнивает числа, затем преобразуем результат сравнения в число getAsInt*/
             before.add(group);
-            Comparator<? super GroupFields> byId = (g1,g2) -> Integer.compare(g1.getId(),g2.getId());
-            before.sort(byId);
-            after.sort(byId);
             Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
     }
 

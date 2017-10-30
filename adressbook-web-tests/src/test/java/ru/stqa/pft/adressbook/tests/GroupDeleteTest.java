@@ -7,6 +7,7 @@ import ru.stqa.pft.adressbook.appmanager.TestBase;
 import ru.stqa.pft.adressbook.model.GroupFields;
 
 import java.util.List;
+import java.util.Set;
 
 
 public class GroupDeleteTest extends TestBase {
@@ -14,20 +15,20 @@ public class GroupDeleteTest extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         app.goTo().groups();
-        if (app.group().list().size()==0) {
+        if (app.group().all().size()==0) {
             app.group().create(new GroupFields().withName("test1"));
         }
     }
 
     @Test
     public void groupDelete() {
-        List<GroupFields> before = app.group().list();
-        int index = before.size()-1;
-        app.group().delete(index);
-        List<GroupFields> after = app.group().list();
+        Set<GroupFields> before = app.group().all();
+        GroupFields deletedGroup = before.iterator().next();
+        app.group().delete(deletedGroup);
+        Set<GroupFields> after = app.group().all();
         Assert.assertEquals(after.size(), before.size() - 1);
         if (after.size()>0) {
-            before.remove(index);
+            before.remove(deletedGroup);
             Assert.assertEquals(after, before);
         }
     }

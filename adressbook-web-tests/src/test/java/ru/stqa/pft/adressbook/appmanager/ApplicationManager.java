@@ -59,12 +59,6 @@ public class ApplicationManager {
   public UserHelper user() {
     return userHelper;
   }
-  public void imitationEnter() {
-    Actions builder = new Actions(wd);
-    Action enter =
-            builder .sendKeys(Keys.ENTER).build();
-    enter.perform();
-  }
 
   public MoveManager goTo() {
     return moveManager;

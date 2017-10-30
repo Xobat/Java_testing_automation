@@ -2,8 +2,13 @@ package ru.stqa.pft.adressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.adressbook.model.UserFields;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class UserHelper extends HelperBase {
 
@@ -57,6 +62,18 @@ public class UserHelper extends HelperBase {
     type(By.name("notes"),userFields.getNotes());
   }
 
+  public Set<UserFields> all() {
+    Set <UserFields> users = new HashSet<>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element: elements) {
+
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+
+      users.add(new UserFields().withId(id));
+    }
+    return users;
+  }
+
   public void selectUserModified() {
       wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img")).click();
 
@@ -73,24 +90,36 @@ public class UserHelper extends HelperBase {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
   }
 
-  public void selectUser() {
-    if (!wd.findElement(By.name("selected[]")).isSelected()){
-      wd.findElement(By.name("selected[]")).click();
-    }
-  }
 
-  public void deleteUser() {
-    wd.findElement(By.name("selected[]"));
+
+  public void delete(UserFields user) {
+    selectUserById(user.getId());
+    wd.findElement(By.xpath("//*[@id=\"content\"]/form[2]/div[2]/input")).click();
+    acceptAllert();
+  }
+  public void goToAddNew() {
+    click(By.linkText("add new"));
+  }
+  public void confirmPopUp() {
+
   }
   public int getUserCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
   public void create(UserFields user) {
+    goToAddNew();
     fillUserFields(user);
     submitUser();
     backtoUsersPage();
   }
+  public void openUserById(int id) {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+  }
+  public void selectUserById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
   public void update(UserFields user) {
+    openUserById(user.getId());
     fillUserFields(user);
     updateUser();
     backtoUsersPage();

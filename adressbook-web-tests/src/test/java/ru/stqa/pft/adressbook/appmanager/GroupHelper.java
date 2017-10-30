@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.adressbook.model.GroupFields;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HelperBase{
 
@@ -14,7 +15,7 @@ public class GroupHelper extends HelperBase{
     super(wd);
   }
 
-  public void backtoGroupsPage() {
+  public void backToGroupsPage() {
     click(By.linkText("group page"));
   }
 
@@ -41,6 +42,10 @@ public class GroupHelper extends HelperBase{
       wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
   public void initGroupModification() {
     click(By.name("edit"));
   }
@@ -57,15 +62,16 @@ public class GroupHelper extends HelperBase{
     creationNewGroup();
     fillGroupFields(group);
     submitGroup();
-    backtoGroupsPage();
+    backToGroupsPage();
   }
 
   public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupFields> list() {
-    List <GroupFields> groups = new ArrayList<GroupFields>();
+
+  public Set<GroupFields> all() {
+    Set <GroupFields> groups = new HashSet<GroupFields>();
     List <WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element: elements) {
       String name = element.getText();
@@ -75,16 +81,24 @@ public class GroupHelper extends HelperBase{
     }
     return groups;
   }
-  public void modify(int index, GroupFields group) {
-    select(index);
+
+  public void modify(GroupFields group) {
+    selectGroupById(group.getId());
     initGroupModification();
     fillGroupFields(group);
     submitGroupModified();
-    backtoGroupsPage();
+    backToGroupsPage();
   }
   public void delete(int index) {
     select(index);
     delete();
-    backtoGroupsPage();
+    backToGroupsPage();
   }
+
+  public void delete(GroupFields group) {
+    selectGroupById(group.getId());
+    delete();
+    backToGroupsPage();
+  }
+
 }
