@@ -18,7 +18,7 @@ public class UserDeleteTest extends TestBase{
     }
   }
 
-  
+
   @Test(enabled = true)
   public void deleteUserTest() {
     Set<UserFields> before = app.user().all();
