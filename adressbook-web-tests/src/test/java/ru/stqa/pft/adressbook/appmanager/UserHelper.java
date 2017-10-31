@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.adressbook.model.UserFields;
+import ru.stqa.pft.adressbook.model.Users;
 
 import java.util.HashSet;
 import java.util.List;
@@ -62,13 +63,11 @@ public class UserHelper extends HelperBase {
     type(By.name("notes"),userFields.getNotes());
   }
 
-  public Set<UserFields> all() {
-    Set <UserFields> users = new HashSet<>();
+  public Users all() {
+    Users users = new Users();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element: elements) {
-
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-
       users.add(new UserFields().withId(id));
     }
     return users;

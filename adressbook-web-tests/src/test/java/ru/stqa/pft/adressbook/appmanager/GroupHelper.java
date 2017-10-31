@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.adressbook.model.GroupFields;
+import ru.stqa.pft.adressbook.model.Groups;
 
 import java.util.HashSet;
 import java.util.List;
@@ -70,13 +71,12 @@ public class GroupHelper extends HelperBase{
   }
 
 
-  public Set<GroupFields> all() {
-    Set <GroupFields> groups = new HashSet<GroupFields>();
+  public Groups all() {
+   Groups groups = new Groups();
     List <WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element: elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-
       groups.add(new GroupFields().withId(id).withName(name));
     }
     return groups;
