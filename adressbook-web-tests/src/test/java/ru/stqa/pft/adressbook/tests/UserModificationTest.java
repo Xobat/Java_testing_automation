@@ -12,6 +12,9 @@ import ru.stqa.pft.adressbook.model.Users;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.hamcrest.MatcherAssert.*;
+import static org.testng.Assert.*;
+
 
 public class UserModificationTest extends TestBase{
 
@@ -35,8 +38,8 @@ public class UserModificationTest extends TestBase{
 
     app.user().update(user);
     Users after = app.user().all();
-    Assert.assertEquals(after.size(), before.size());
-    MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.without(modifiedUser).withAdded(user)));
+    assertEquals(after.size(), before.size());
+    assertThat(after, CoreMatchers.equalTo(before.without(modifiedUser).withAdded(user)));
   }
 
 }

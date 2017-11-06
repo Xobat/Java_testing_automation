@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.adressbook.model.UserFields;
 import ru.stqa.pft.adressbook.model.Users;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -64,13 +66,17 @@ public class UserHelper extends HelperBase {
   }
 
   public Users all() {
-    Users users = new Users();
+    if (userCache !=null) {
+      return userCache;
+    }
+
+    userCache = new Users();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element: elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      users.add(new UserFields().withId(id));
+      userCache.add(new UserFields().withId(id));
     }
-    return users;
+    return new Users(userCache);
   }
 
   public void selectUserModified() {
@@ -95,6 +101,8 @@ public class UserHelper extends HelperBase {
     selectUserById(user.getId());
     wd.findElement(By.xpath("//*[@id=\"content\"]/form[2]/div[2]/input")).click();
     acceptAllert();
+    userCache = null;
+    backtoUsersPage();
   }
   public void goToAddNew() {
     click(By.linkText("add new"));
@@ -109,6 +117,7 @@ public class UserHelper extends HelperBase {
     goToAddNew();
     fillUserFields(user);
     submitUser();
+    userCache = null;
     backtoUsersPage();
   }
   public void openUserById(int id) {
@@ -121,6 +130,8 @@ public class UserHelper extends HelperBase {
     openUserById(user.getId());
     fillUserFields(user);
     updateUser();
+    userCache = null;
     backtoUsersPage();
   }
+  private Users userCache = null;
 }

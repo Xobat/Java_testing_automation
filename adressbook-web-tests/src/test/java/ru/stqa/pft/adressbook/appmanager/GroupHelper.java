@@ -5,10 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.adressbook.model.GroupFields;
 import ru.stqa.pft.adressbook.model.Groups;
-
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 
 public class GroupHelper extends HelperBase{
 
@@ -28,11 +31,13 @@ public class GroupHelper extends HelperBase{
     type(By.name("group_name"), groupFields.getGroupName());
     type(By.name("group_header"), groupFields.getGroupHeader());
     type(By.name("group_footer"), groupFields.getGroupFooter());
+
   }
 
   public void creationNewGroup() {
     click(By.name("new"));
     click(By.id("content"));
+
   }
 
   public void delete() {
@@ -63,6 +68,7 @@ public class GroupHelper extends HelperBase{
     creationNewGroup();
     fillGroupFields(group);
     submitGroup();
+    groupCashe = null;
     backToGroupsPage();
   }
 
@@ -72,14 +78,19 @@ public class GroupHelper extends HelperBase{
 
 
   public Groups all() {
-   Groups groups = new Groups();
+
+    if (groupCashe!=null) {
+      return new Groups(groupCashe);
+    }
+
+    groupCashe = new Groups();
     List <WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element: elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      groups.add(new GroupFields().withId(id).withName(name));
+      groupCashe.add(new GroupFields().withId(id).withName(name));
     }
-    return groups;
+    return new Groups(groupCashe);
   }
 
   public void modify(GroupFields group) {
@@ -87,6 +98,7 @@ public class GroupHelper extends HelperBase{
     initGroupModification();
     fillGroupFields(group);
     submitGroupModified();
+    groupCashe = null;
     backToGroupsPage();
   }
   public void delete(int index) {
@@ -98,7 +110,11 @@ public class GroupHelper extends HelperBase{
   public void delete(GroupFields group) {
     selectGroupById(group.getId());
     delete();
+    groupCashe = null;
     backToGroupsPage();
   }
+  private Groups groupCashe = null;
+
+
 
 }
