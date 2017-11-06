@@ -110,7 +110,7 @@ public class UserHelper extends HelperBase {
   public void confirmPopUp() {
 
   }
-  public int getUserCount() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
   public void create(UserFields user) {
